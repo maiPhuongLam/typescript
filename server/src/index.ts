@@ -1,10 +1,13 @@
+import { config } from 'dotenv'
+config()
+
 import express, { Request, Response } from 'express'
 import mongoose from 'mongoose'
 import Deck from './models/Deck'
 const app = express()
 const PORT = 5000
 
-app.use(express.json())
+app.use(express.json()) 
 
 app.post('/decks', async (req, res: Response) => {
     const newDeck = new Deck({
@@ -15,7 +18,7 @@ app.post('/decks', async (req, res: Response) => {
 })
 
 mongoose.set('strictQuery', true)
-mongoose.connect('mongodb+srv://maiphuonglambh2002:mpl08092002@typescript.otpncqa.mongodb.net/?retryWrites=true&w=majority')
+mongoose.connect(process.env.MONGO_URL!)
     .then(() => {
         app.listen(5000, () => {
             console.log('SERVER IS RUNNING ON PORT: ' + PORT);
