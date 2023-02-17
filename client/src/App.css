@@ -36,9 +36,17 @@
   border: 1px solid #fff;
   border-radius: 10px;
   cursor: pointer;
+  position: relative;
 }
 
-.decks:hover {
+.decks li:hover {
   background: #ccc;
   overflow: hidden;
+}
+
+.decks li button {
+  position: absolute;
+  font-size: 12px;
+  top: 5px;
+  right: 5px;
 }
