@@ -7,8 +7,6 @@ import { deleteDeck } from './api/deleteDeck'
 import { getDecks } from './api/getDecks'
 import { TDeck } from './api/getDecks'
 
-
-
 function App() {
   const [decks, setDecks] = useState<TDeck[]>([])
   const [title, setTitle] = useState('')
@@ -35,14 +33,14 @@ function App() {
 
   return (
     <div className="App">
-      <div className="decks">
+      <ul className="decks">
         {decks.map((deck) => (
           <li key={deck._id}>
             <button onClick={() => handleDeleteDeck(deck._id)}>X</button>
             <Link to={`decks/${deck._id}`}>{deck.title}</Link>
           </li>
         ))}
-      </div>
+      </ul>
       <form onSubmit={handleCreateDeck}>
         <label htmlFor="deck-title">Deck title</label>
         <input 
